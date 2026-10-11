@@ -58,35 +58,6 @@ namespace ConsoleApp1
             }
             lineOfCredit.MakeWithdrawal(600m, DateTime.UtcNow, "credit");
             Console.WriteLine(lineOfCredit.GetAccountHistory());
-
-            Console.WriteLine("=== REGULAR ===");
-            var regular = new BankAccount("Danil", 25_000m);   
-            Console.WriteLine(regular);
-            Console.WriteLine($"Баланс до: {regular.Balance}");
-
-            regular.PerformMonthAndTransactions();             
-
-            Console.WriteLine($"Баланс после: {regular.Balance}");
-            Console.WriteLine(regular.GetAccountHistory());
-            Console.WriteLine();
-
-            Console.WriteLine("=== ЖУРНАЛ АУДИТА ===");
-            Console.WriteLine(BankAccount.Audit);
-
-            Console.WriteLine("=== ПЕРЕВОД ===");
-            var bank = new Bank();
-
-            var accA = new BankAccount("Danil", 10_000m);
-            var accB = new BankAccount("Ulyana", 1_000m);
-
-            Console.WriteLine($"A до: {accA.Balance}  B до: {accB.Balance}");
-            bank.Transfer(accA, accB, 500m, DateTime.UtcNow, "перевод другу");
-            Console.WriteLine($"A после: {accA.Balance}  B после: {accB.Balance}");
-
-            Console.WriteLine("=== ИСТОРИЯ A ===");
-            Console.WriteLine(accA.GetAccountHistory());
-            Console.WriteLine("=== ИСТОРИЯ B ===");
-            Console.WriteLine(accB.GetAccountHistory());
         }
     }
 }
