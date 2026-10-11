@@ -1,9 +1,6 @@
 ﻿using bank;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -27,12 +24,12 @@ namespace ConsoleApp1
             try
             {
                 account2.MakeWithdrawal(10000, DateTime.UtcNow, "asdas");
-
             }
-            catch(InvalidOperationException e)
+            catch (InvalidOperationException e)
             {
                 Console.WriteLine(e.Message);
             }
+
             InterestEarningAccount interest = new InterestEarningAccount("Ulyana", 1000);
             interest.PerformMonthAndTransactions();
 
@@ -49,15 +46,39 @@ namespace ConsoleApp1
             accounts.Add(lineOfCredit);
             accounts.Add(giftcart);
 
-            foreach (var  account in accounts)
+            foreach (var account in accounts)
             {
-                Console.WriteLine(account);   //Console.WriteLine(account.ToString());
-
+                Console.WriteLine(account);
                 account.PerformMonthAndTransactions();
-                Console.WriteLine(interest.GetAccountHistory());
+                Console.WriteLine(account.GetAccountHistory());
             }
+
             lineOfCredit.MakeWithdrawal(600m, DateTime.UtcNow, "credit");
             Console.WriteLine(lineOfCredit.GetAccountHistory());
+
+            Console.WriteLine("=== REGULAR ===");
+            var regular = new BankAccount("Danil", 25_000m);
+            Console.WriteLine(regular);
+            Console.WriteLine($"Баланс до: {regular.Balance}");
+
+            regular.PerformMonthAndTransactions();
+
+            Console.WriteLine($"Баланс после: {regular.Balance}");
+            Console.WriteLine(regular.GetAccountHistory());
+            Console.WriteLine();
+
+            Console.WriteLine("=== ПЕРЕВОД ===");
+            var bank = new Bank();
+
+            var accA = new BankAccount("Danil", 10_000m);
+            var accB = new BankAccount("Ulyana", 1_000m);
+
+            Console.WriteLine($"A до: {accA.Balance}  B до: {accB.Balance}");
+            bank.Transfer(accA, accB, 500m, DateTime.UtcNow, "перевод другу");
+            Console.WriteLine($"A после: {accA.Balance}  B после: {accB.Balance}");
+
+            Console.WriteLine("=== ЖУРНАЛ АУДИТА ===");
+            Console.WriteLine(BankAccount.Audit);
         }
     }
 }
