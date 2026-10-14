@@ -42,7 +42,7 @@ namespace BankAccounts
             : this("N/A", owner, 0, interestRate)
         {
         }
-
+        //
         /// <summary>
         /// Возвращает строковое представление депозитного счёта.
         /// </summary>
