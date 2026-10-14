@@ -43,7 +43,7 @@ namespace BankAccounts
         /// <param name="number">Номер счёта.</param>
         /// <param name="owner">Владелец счёта.</param>
         /// <param name="balance">Начальный баланс.</param>
-        public Account(string number, string owner, decimal balance)
+        public Account(string number, string  owner, decimal balance)
         {
             _number = number;
             Owner = owner;
