@@ -2,7 +2,7 @@
 
 // Единый контракт для всех политик снятия: возвращаем решение, а не выбрасываем исключения
 // Это утраняет LSP между базовым и переопределенным методом
-internal class WithdrawalsDecision(bool IsAllowed, decimal Fee, string? RejectionReason)
+public sealed record WithdrawalsDecision(bool IsAllowed, decimal Fee, string? RejectionReason)
 {
     public static WithdrawalsDecision Allow() => new(true, 0m, null);
 
