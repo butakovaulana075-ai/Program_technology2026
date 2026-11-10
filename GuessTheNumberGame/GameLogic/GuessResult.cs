@@ -4,5 +4,6 @@ public enum GuessResult
 {
     TooLow,
     TooHigh,
-    Correct
+    Correct,
+    InvalidInput
 }
