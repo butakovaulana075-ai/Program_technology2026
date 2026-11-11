@@ -24,7 +24,8 @@ public class Game
     private int _randomNumber;
     private int _invalidInputCount;
     private GameStatus _status;
-
+    private int _attemptsCount;
+    public int AttemptsCount => _attemptsCount;
 
     public void Start()
     {
@@ -32,6 +33,7 @@ public class Game
 
         _invalidInputCount = 0;
         _status = GameStatus.InProgress;
+        _attemptsCount = 0;
     }
 
     public GuessResult ProcessInput(string input)
@@ -45,6 +47,8 @@ public class Game
             return GuessResult.InvalidInput;
 
         }
+        _attemptsCount++;
+
         GuessResult checkResult = _numberChecker.Check(userNum, _randomNumber);
 
         if (checkResult == GuessResult.Correct)
