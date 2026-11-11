@@ -1,5 +1,6 @@
 ﻿using GuessTheNumber.Input;
 using GuessTheNumber.NumberGeneration;
+using GuessTheNumberGame.GameLogic;
 
 namespace GuessTheNumber.GameLogic;
 
@@ -26,6 +27,7 @@ public class Game
     private GameStatus _status;
     private int _attemptsCount;
     public int AttemptsCount => _attemptsCount;
+    private int _maxAttempts;
 
     public void Start()
     {
@@ -53,6 +55,30 @@ public class Game
 
         if (checkResult == GuessResult.Correct)
             _status = GameStatus.Won;
+
+         else if (_attemptsCount >= _maxAttempts)
+        {
+            _status = GameStatus.AttemptsEnded;
+        }
+
         return checkResult;
+    }
+
+    public void SetDifficulty(DifficultyLevel level)
+    {
+        switch (level)
+        {
+            case DifficultyLevel.Easy:
+                _maxAttempts = 15;
+                break;
+
+            case DifficultyLevel.Medium:
+                _maxAttempts = 10;
+                break;
+
+            case DifficultyLevel.Hard:
+                _maxAttempts = 5;
+                break;
+        }
     }
 }

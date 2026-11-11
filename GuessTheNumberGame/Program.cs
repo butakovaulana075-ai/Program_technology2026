@@ -2,6 +2,7 @@
 using GuessTheNumber.GameLogic;
 using GuessTheNumber.Input;
 using GuessTheNumber.NumberGeneration;
+using GuessTheNumberGame.GameLogic;
 using GuessTheNumberGame.Statistics;
 using System.Globalization;
 
@@ -24,6 +25,37 @@ internal class Program
 
         string filePath = "statistics.txt";
         statistics.LoadFromFile(filePath);
+
+        Console.WriteLine("Выберите уровень сложности:");
+        Console.WriteLine("1 — Легкий");
+        Console.WriteLine("2 — Средний");
+        Console.WriteLine("3 — Сложный");
+
+        string difficultyInput = Console.ReadLine();
+
+        DifficultyLevel difficultyLevel;
+
+        switch (difficultyInput)
+        {
+            case "1":
+                difficultyLevel = DifficultyLevel.Easy;
+                break;
+
+            case "2":
+                difficultyLevel = DifficultyLevel.Medium;
+                break;
+
+            case "3":
+                difficultyLevel = DifficultyLevel.Hard;
+                break;
+
+            default: 
+                Console.WriteLine("Некорректный ввод. Установлена легкая сложность");
+                difficultyLevel = DifficultyLevel.Easy;
+                break;
+        }
+
+        game.SetDifficulty(difficultyLevel);
 
         game.Start();
         statistics.StartGame();
