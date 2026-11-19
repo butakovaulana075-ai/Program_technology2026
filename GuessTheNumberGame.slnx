@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="GuessTheNumber.ConsoleApp/GuessTheNumber.ConsoleApp.csproj" Id="cb97ced5-ea9c-4f9f-a6d7-3658f2ff061e" />
   <Project Path="GuessTheNumberGame/GuessTheNumberGame.csproj" />
 </Solution>

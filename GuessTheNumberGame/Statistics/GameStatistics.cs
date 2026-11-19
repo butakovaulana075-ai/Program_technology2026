@@ -9,24 +9,6 @@ public class GameStatistics
     public int Losses { get; private set; }
     public int Attempts { get; private set; }
 
-    public void StartGame()
-    {
-        TotalGames++;
-    }
-
-    public void EndGame(bool isWin, int attempts)
-    {
-        if (isWin)
-        {
-            Wins++;
-        }
-        else
-        {
-            Losses++;
-        }
-        Attempts += attempts;
-    }
-
     public void SaveToFile(string filePath)
     {
         string statistics = $"Всего игр: {TotalGames}\n" + $"Победы: {Wins}\n" + $"Поражения: {Losses}\n" + $"Всего попыток: {Attempts}";
